@@ -4,13 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Blog Generator</title>
+
+    <style>
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      .load {
+        width: 100px;
+        height: 100px;
+        margin: 110px auto 0;
+        border: solid 10px #8822aa;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        -webkit-transition: all 0.5s ease-in;
+        -webkit-animation-name: rotate;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+
+        transition: all 0.5s ease-in;
+        animation-name: rotate;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    </style>
+
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex flex-col min-h-screen font-sans antialized bg-gray-200">
     <!---------NavBar------->
     <nav class="bg-blue-600 p-5 text-white flex justify-between">
       <div class=""><h1 class="text-3xl font-bold">AI Blog Generator</h1></div>
-      <div class=""><a href="" class="hover:underline text-xl font-semibold">Logout</a></div>
+      <div class="space-x-3">
+        <a href="" class="hover:underline text-xl font-semibold">Login</a>
+        <a href="" class="hover:underline text-xl font-semibold">Signup</a>
+      </div>
     </nav>
 
     <!----------Main-------->
@@ -20,7 +65,7 @@
       >
         <!---------Introduction------->
         <div class="text-center">
-          <h2 class="text-2xl font-bold mb-4 underline antialized">
+          <h2 class="text-3xl font-bold mb-4 underline">
             Welcome to AI Blog Generator
           </h2>
           <p class="text-gray-700">
@@ -45,28 +90,32 @@
               id="youtubeLink"
               type="url"
               placeholder="Paste Youtube Link..."
-              class="flex-grow border p-2 border-blue-400 rounded-l-lg"
+              class="flex-grow border p-2 border-blue-400 rounded-l-md"
             />
             <button
               id="generateBlogButton"
-              class="border bg-blue-600 text-white font-semibold rounded-r-lg py-2 px-5 hover:bg-blue-700 transition-colors"
+              class="border bg-blue-600 text-white font-semibold rounded-r-md py-2 px-5 hover:bg-blue-700 transition-colors"
             >
               Generate
             </button>
           </div>
         </div>
 
+        <!---------Section for loading circle------->
+        <div class="load hidden" id="loading-circle"></div>
+
         <!---------Generated Blog Display Section------->
         <section class="flex-grow">
           <h2 class="text-xl font-semibold my-4">Generated Blog Article</h2>
           <div id="blogContent" class="mt-2 text-gray-700 space-y-4"></div>
-          <!---------Section for loading circle------->
         </section>
       </div>
     </main>
   </body>
 
-  <footer class="text-center p-4 text-black mt-6 text-xl font-semibold">
+  <footer
+    class="text-center p-4 text-black mt-6 text-xl font-semibold antialiased hover:subpixel-antialiased"
+  >
     <a href="#" class="">Powered by Tech Tides with Tiba</a>
   </footer>
 
